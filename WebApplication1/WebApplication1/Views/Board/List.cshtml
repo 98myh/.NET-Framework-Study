@@ -3,6 +3,8 @@
 
 @{
     Layout = null;
+    //ViewData 사용할때는 이렇게 사용, ViewBag은 필요없음
+    var member = ViewData["Member"] as WebApplication1.Models.Member;
 }
 
 <!DOCTYPE html>
@@ -13,22 +15,30 @@
     <title>List</title>
 </head>
 <body>
-    <table>
-        <thead>
-            <th>번호</th>
-            <th>제목</th>
-            <th>글쓴이</th>
-        </thead>
-        <tbody>
-            @foreach(var item in Model)
-            {
-                <tr>
-                    <td>@item.Document_Number</td>
-                    <td>@item.Title</td>
-                    <td>@item.Writer</td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    <div>
+        <p>
+            <!--@ViewBag.Member.Name 님 환영합니다!-->
+
+            @member.Name 님 환영합니다!
+
+        </p>
+        <table>
+            <thead>
+                <th>번호</th>
+                <th>제목</th>
+                <th>글쓴이</th>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Document_Number</td>
+                        <td>@item.Title</td>
+                        <td>@item.Writer</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
